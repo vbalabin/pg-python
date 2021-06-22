@@ -19,9 +19,7 @@ pipeline {
 
     post {
         always {
-            cleanup {
-            cleanWs()
-            }            
+            echo "congratz"
         }
     }
 }
