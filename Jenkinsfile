@@ -1,5 +1,5 @@
 pipeline {
-    agent none 
+    agent any 
     stages {
         stage('Test') { 
             agent { 
@@ -16,7 +16,7 @@ pipeline {
             }
         }
     }
-    
+
     post {
         always {
             junit 'test-reports/results.xml'
