@@ -13,11 +13,6 @@ pipeline {
                 sh "pip install -r requirements.txt --user"
                 sh 'python -m pytest --junit-xml test-reports/results.xml tests/test_practice.py'
                 }
-                post {
-                    always {
-                        junit 'test-reports/results.xml'
-                    }
-                }
             }
         }
     }
