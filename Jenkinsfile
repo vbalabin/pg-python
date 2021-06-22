@@ -15,18 +15,13 @@ pipeline {
                 }
             }
         }
+    }
 
-        stage('Push image') {
-            agent any
-            steps{
-                def app
-                app = docker.build("thessky/epam-practice")
-                docker.withRegistry('https://registry.hub.docker.com', 'sky-docker-hub') {
-                    app.push("${env.BUILD_NUMBER}")
-                    app.push("latest")
-                    } 
-                echo "Trying to Push Docker Build to DockerHub"
-            }
+    node {
+        stage('Clone repository') {
+            /* Cloning the Repository to our Workspace */
+
+            echo "Clone Rep"
         }
     }
 
