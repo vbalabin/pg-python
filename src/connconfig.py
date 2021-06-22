@@ -1,7 +1,6 @@
 def configure():
-    # 172.19.0.2
     return {
-    'host' : 'pg',
+    'host' : '172.19.0.2',
     'user' : 'postgres',
     'password' : 'postgres',
     }
