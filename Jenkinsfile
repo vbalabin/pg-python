@@ -19,6 +19,7 @@ pipeline {
 
     post {
         always {
+            sh 'find . -name "*.xml" -exec touch {} \\;'
             junit 'test-reports/results.xml'
             cleanup {
             cleanWs()
