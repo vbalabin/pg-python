@@ -11,7 +11,7 @@ pipeline {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                 sh "ls"
                 sh "pip install -r requirements.txt --user"
-                sh 'pytest --junit-xml test-reports/results.xml tests/test_practice.py'
+                sh 'python -m pytest --junit-xml test-reports/results.xml tests/test_practice.py'
                 }
                 post {
                     always {
