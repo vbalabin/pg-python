@@ -16,23 +16,16 @@ pipeline {
             }
         }
 
-        def app
-
-        stage('Build image') {
-            /* This builds the actual image */
-
-            app = docker.build("thessky/epam-practice")
-        }
-
         stage('Push image') {
-            /* 
-                You would need to first register with DockerHub before you can push images to your account
-            */
-            docker.withRegistry('https://registry.hub.docker.com', 'sky-docker-hub') {
-                app.push("${env.BUILD_NUMBER}")
-                app.push("latest")
-                } 
-                    echo "Trying to Push Docker Build to DockerHub"
+            node {
+                def app
+                app = docker.build("thessky/epam-practice")
+                docker.withRegistry('https://registry.hub.docker.com', 'sky-docker-hub') {
+                    app.push("${env.BUILD_NUMBER}")
+                    app.push("latest")
+                    } 
+                        echo "Trying to Push Docker Build to DockerHub"
+            }
         }
 
     }
